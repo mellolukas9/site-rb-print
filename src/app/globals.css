@@ -1,0 +1,223 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+  --font-heading: var(--font-poppins), var(--font-inter), ui-sans-serif, sans-serif;
+  /* Brand primitives exposed as utilities (bg-tinta, text-ciano, ...) */
+  --color-tinta: var(--marca-tinta);
+  --color-tinta-soft: var(--marca-tinta-700);
+  --color-tinta-muted: var(--marca-tinta-300);
+  --color-ciano: var(--marca-ciano);
+  --color-ciano-texto: var(--marca-ciano-700);
+  --color-amarelo: var(--marca-amarelo);
+  --color-magenta: var(--marca-magenta);
+  --color-magenta-texto: var(--marca-magenta-700);
+  --color-laranja: var(--marca-laranja);
+  --color-whatsapp: var(--cta-whatsapp-bg);
+  --color-whatsapp-hover: var(--cta-whatsapp-bg-hover);
+  --color-nevoa: var(--marca-nevoa);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  /* ── Layer 1 · Primitives (brand-guidelines.md) — cores do logo da RB Print ── */
+  --marca-tinta: #1a1a1a;       /* tinta preta do logo: texto principal, header/rodapé escuros · 17.9:1 no branco */
+  --marca-tinta-700: #2b2b33;
+  --marca-tinta-300: #c9c9d1;   /* texto secundário sobre tinta · 9.7:1 */
+  --marca-ciano: #00aeef;       /* pincelada ciano do logo — decorativo (2.5:1 no branco, não usar como texto) */
+  --marca-ciano-700: #007399;   /* mesma cor escurecida p/ links/foco/CTAs secundários · 5.7:1 no branco */
+  --marca-magenta: #e6007e;     /* pincelada magenta — decorativo */
+  --marca-magenta-700: #a3005a; /* escurecida p/ texto/selo · 7.8:1 no branco */
+  --marca-amarelo: #ffd400;     /* pincelada amarela — só sobre tinta/preto · 14.7:1 no preto */
+  --marca-laranja: #f7941d;     /* sacola do logo — texto preto por cima · 9.0:1 */
+  --marca-whatsapp: #0f7a3d;    /* 5.4:1 com branco — exclusivo p/ pedidos */
+  --marca-whatsapp-800: #0b5e2f;
+  --marca-grafite: #52525b;     /* 7.3:1 no branco */
+  --marca-nevoa: #f6f4ee;       /* papel: fundo neutro quente (gráfica trabalha com papel) */
+  --marca-linha: #e6e2d8;
+
+  /* ── Layer 2 · Semantic (shadcn names) ── */
+  --background: #ffffff;
+  --foreground: var(--marca-tinta);
+  --card: #ffffff;
+  --card-foreground: var(--marca-tinta);
+  --popover: #ffffff;
+  --popover-foreground: var(--marca-tinta);
+  --primary: var(--marca-tinta);
+  --primary-foreground: #ffffff;
+  --secondary: var(--marca-nevoa);
+  --secondary-foreground: var(--marca-tinta);
+  --muted: var(--marca-nevoa);
+  --muted-foreground: var(--marca-grafite);
+  --accent: var(--marca-nevoa);
+  --accent-foreground: var(--marca-tinta);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: var(--marca-linha);
+  --input: var(--marca-linha);
+  --ring: var(--marca-ciano-700);
+  --chart-1: var(--marca-ciano-700);
+  --chart-2: var(--marca-amarelo);
+  --chart-3: var(--marca-magenta);
+  --chart-4: var(--marca-tinta);
+  --chart-5: var(--marca-grafite);
+  --radius: 0.75rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: var(--marca-tinta);
+  --sidebar-primary: var(--marca-tinta);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--marca-nevoa);
+  --sidebar-accent-foreground: var(--marca-tinta);
+  --sidebar-border: var(--marca-linha);
+  --sidebar-ring: var(--marca-ciano-700);
+
+  /* Assinatura: as 4 tintas de processo (CMYK) do fundo do logo, em faixas duras — nunca degradê */
+  --marca-anel: conic-gradient(from -45deg, var(--marca-ciano) 0 25%, var(--marca-magenta) 0 50%, var(--marca-amarelo) 0 75%, var(--marca-tinta) 0);
+  --marca-faixa: linear-gradient(135deg, var(--marca-ciano) 0 25%, var(--marca-magenta) 0 50%, var(--marca-amarelo) 0 75%, var(--marca-tinta) 0 100%);
+
+  /* ── Layer 3 · Component ── */
+  --product-card-radius: 0.75rem;
+  --product-card-media-bg: var(--marca-nevoa);
+  --category-ring-width: 4px;
+  --cta-whatsapp-bg: var(--marca-whatsapp);
+  --cta-whatsapp-bg-hover: var(--marca-whatsapp-800);
+  --chip-active-bg: var(--marca-tinta);
+  --chip-active-fg: #ffffff;
+  --header-height: 8.5rem; /* altura do header sticky (mobile e desktop ficam ~8rem) */
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 150ms;
+  --dur-base: 250ms;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans scroll-smooth;
+    scroll-padding-top: var(--header-height);
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+  :focus-visible {
+    outline: 3px solid var(--marca-ciano-700);
+    outline-offset: 2px;
+  }
+  button, a, [role="button"] {
+    touch-action: manipulation;
+  }
+}
+
+@utility ring-marca {
+  background: var(--marca-anel);
+}
+
+@utility faixa-marca {
+  background: var(--marca-faixa);
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Miolo do selo CMYK (anel) */
+@utility mask-marca {
+  mask: radial-gradient(circle, transparent 38%, #000 39.5%);
+}
